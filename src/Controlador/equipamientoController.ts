@@ -1,4 +1,4 @@
-import { BaseController } from './BaseController';
+import { BaseController } from './baseController';
 import { Equipamiento } from '../Entidades/Equipamiento';
 
 export class EquipamientoController extends BaseController<Equipamiento> {

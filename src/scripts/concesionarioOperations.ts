@@ -1,4 +1,4 @@
-import { controllerManager } from '../Controlador/ControllerManager';
+import { controllerManager } from '../Controlador/controllerManager';
 import { Concesionario } from '../Entidades/Concesionario';
 import { Validators } from './validators';
 import { NotificationService } from './notifications';

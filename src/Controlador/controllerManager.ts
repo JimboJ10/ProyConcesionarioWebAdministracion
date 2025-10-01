@@ -1,11 +1,11 @@
-import { ConcesionarioController } from './ConcesionarioController';
-import { AutomovilController } from './AutomovilController';
-import { VendedorController } from './VendedorController';
-import { StockController } from './StockController';
-import { ServicioOficialController } from './ServicioOficialController';
-import { EquipamientoController } from './EquipamientoController';
-import { ExtraController } from './ExtraController';
-import { VentaController } from './VentaController';
+import { ConcesionarioController } from './concesionarioController';
+import { AutomovilController } from './automovilController';
+import { VendedorController } from './vendedorController';
+import { StockController } from './stockController';
+import { ServicioOficialController } from './servicioOficialController';
+import { EquipamientoController } from './equipamientoController';
+import { ExtraController } from './extraController';
+import { VentaController } from './ventaController';
 
 export class ControllerManager {
     public concesionarioController: ConcesionarioController;
