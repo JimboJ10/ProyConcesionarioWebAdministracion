@@ -44,9 +44,8 @@ export class VendedorOperations {
                 return false;
             }
 
-            // Crear nuevo vendedor
             const nuevoVendedor = new Vendedor(
-                '', // Se genera automáticamente
+                '',
                 formData.nombre,
                 formData.apellidos,
                 formData.nif,
@@ -146,7 +145,6 @@ export class VendedorOperations {
                 return false;
             }
 
-            // Verificar dependencias - No se puede eliminar si tiene ventas
             const ventas = controllerManager.ventaController.getByVendedor(id);
             if (ventas.length > 0) {
                 NotificationService.error('Error', 'No se puede eliminar. El vendedor tiene ventas asociadas');

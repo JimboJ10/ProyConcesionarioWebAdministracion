@@ -20,28 +20,27 @@ export class StockOperations {
                 return false;
             }
 
-            // Verificar que no exista otro stock con el mismo número de chasis
             const existeChasis = controllerManager.stockController.getByNumeroChasis(formData.numeroChasis);
             if (existeChasis) {
                 NotificationService.error('Error', 'Ya existe un vehículo con ese número de chasis');
                 return false;
             }
 
-            // Verificar que el automóvil existe
+            // Verifica que el automóvil existe
             const automovil = controllerManager.automovilController.getById(formData.automovilId);
             if (!automovil) {
                 NotificationService.error('Error', 'El modelo de automóvil seleccionado no existe');
                 return false;
             }
 
-            // Verificar que el concesionario existe
+            // Verifica que el concesionario existe
             const concesionario = controllerManager.concesionarioController.getById(formData.concesionarioId);
             if (!concesionario) {
                 NotificationService.error('Error', 'El concesionario seleccionado no existe');
                 return false;
             }
 
-            // Si es servicio oficial, verificar que existe
+            // Si es servicio oficial, verifica que existe
             if (formData.ubicacion === 'servicio_oficial' && formData.servicioOficialId) {
                 const servicioOficial = controllerManager.servicioOficialController.getById(formData.servicioOficialId);
                 if (!servicioOficial) {
@@ -94,7 +93,6 @@ export class StockOperations {
                 return false;
             }
 
-            // Verificar que no exista otro stock con el mismo número de chasis (excepto el actual)
             const existeChasis = controllerManager.stockController.getByNumeroChasis(formData.numeroChasis);
             if (existeChasis && existeChasis.id !== id) {
                 NotificationService.error('Error', 'Ya existe un vehículo con ese número de chasis');

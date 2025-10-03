@@ -9,7 +9,7 @@ export class ExtraOperations {
     // CREAR - INSERT
     static async insertar(formData: any): Promise<boolean> {
         try {
-            // Validaciones básicas
+            // Validaciones
             if (!formData.nombre || formData.nombre.trim() === '') {
                 NotificationService.error('Error de Validación', 'El nombre del extra es obligatorio');
                 return false;
@@ -40,7 +40,6 @@ export class ExtraOperations {
                 return false;
             }
 
-            // Si se especifica equipamientoId, verificar que existe
             if (formData.equipamientoId) {
                 const equipamiento = controllerManager.equipamientoController.getById(formData.equipamientoId);
                 if (!equipamiento) {
@@ -49,7 +48,7 @@ export class ExtraOperations {
                 }
             }
 
-            // Crear nuevo extra
+            // Crea nuevo extra
             const nuevoExtra = new Extra(
                 '', // Se genera automáticamente
                 formData.nombre.trim(),
@@ -101,7 +100,6 @@ export class ExtraOperations {
                 return false;
             }
 
-            // Verificar que no exista otro extra con el mismo nombre (excepto el actual)
             const extras = controllerManager.extraController.getAll();
             const existeNombre = extras.find(extra => 
                 extra.nombre.toLowerCase() === formData.nombre.toLowerCase() && extra.id !== id
@@ -111,7 +109,6 @@ export class ExtraOperations {
                 return false;
             }
 
-            // Si se especifica equipamientoId, verificar que existe
             if (formData.equipamientoId) {
                 const equipamiento = controllerManager.equipamientoController.getById(formData.equipamientoId);
                 if (!equipamiento) {
@@ -120,7 +117,7 @@ export class ExtraOperations {
                 }
             }
 
-            // Crear objeto actualizado
+            // Crea objeto actualizado
             const extraActualizado = new Extra(
                 id,
                 formData.nombre.trim(),

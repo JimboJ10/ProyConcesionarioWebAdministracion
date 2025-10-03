@@ -77,19 +77,16 @@ export class VentaOperations {
                 return false;
             }
 
-            // Debe tener al menos un vendedor o servicio oficial
             if (!formData.vendedorId && !formData.servicioOficialId) {
                 NotificationService.error('Error de Validación', 'Debe especificar un vendedor o servicio oficial');
                 return false;
             }
 
-            // No puede tener ambos al mismo tiempo
             if (formData.vendedorId && formData.servicioOficialId) {
                 NotificationService.error('Error de Validación', 'No puede especificar vendedor y servicio oficial al mismo tiempo');
                 return false;
             }
 
-            // Verificar vendedor si se especifica
             if (formData.vendedorId) {
                 const vendedor = controllerManager.vendedorController.getById(formData.vendedorId);
                 if (!vendedor) {
@@ -98,7 +95,6 @@ export class VentaOperations {
                 }
             }
 
-            // Verificar servicio oficial si se especifica
             if (formData.servicioOficialId) {
                 const servicioOficial = controllerManager.servicioOficialController.getById(formData.servicioOficialId);
                 if (!servicioOficial) {
@@ -107,7 +103,6 @@ export class VentaOperations {
                 }
             }
 
-            // Validar extras incluidos
             const extrasIncluidos = formData.extrasIncluidos || [];
             for (const extraIncluido of extrasIncluidos) {
                 const extra = controllerManager.extraController.getById(extraIncluido.extraId);
@@ -164,7 +159,6 @@ export class VentaOperations {
                 return false;
             }
 
-            // Solo permitir modificar ciertos campos después de la venta
             if (!Validators.validateMatricula(formData.matricula)) {
                 NotificationService.error('Error de Validación', 'Matrícula inválida');
                 return false;
@@ -185,7 +179,6 @@ export class VentaOperations {
                 return false;
             }
 
-            // Verificar que no exista otra venta con la misma matrícula (excepto la actual)
             const ventas = controllerManager.ventaController.getAll();
             const existeMatricula = ventas.find(venta => 
                 venta.matricula.toLowerCase() === formData.matricula.toLowerCase() && venta.id !== id
@@ -242,7 +235,6 @@ export class VentaOperations {
                 return false;
             }
 
-            // Confirmar cancelación
             if (!confirm('¿Estás seguro de que deseas cancelar esta venta? El vehículo volverá a estar disponible.')) {
                 return false;
             }

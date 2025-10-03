@@ -132,7 +132,6 @@ export class ServicioOficialOperations {
                 return false;
             }
 
-            // Verificar dependencias - No se puede eliminar si tiene stock o ventas
             const stockAsociado = controllerManager.stockController.getAll().filter(s => s.servicioOficialId === id);
             if (stockAsociado.length > 0) {
                 NotificationService.error('Error', 'No se puede eliminar. El servicio oficial tiene vehículos en stock');
@@ -145,7 +144,6 @@ export class ServicioOficialOperations {
                 return false;
             }
 
-            // Confirmar eliminación
             if (!confirm(CONSTANTS.MESSAGES.CONFIRM.DELETE)) {
                 return false;
             }

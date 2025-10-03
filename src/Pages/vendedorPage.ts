@@ -454,7 +454,6 @@ export class VendedorPage {
         });
     }
 
-    // Métodos públicos para ser llamados desde el HTML
     public cambiarPagina(pagina: number): void {
         this.paginaActual = pagina;
         this.renderizarTabla();

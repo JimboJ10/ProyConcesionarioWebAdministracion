@@ -61,7 +61,6 @@ export class AutomovilOperations {
     // MODIFICAR - UPDATE
     static async modificar(id: string, formData: any): Promise<boolean> {
         try {
-            // Validaciones similares al insertar
             if (!Validators.validatePrice(formData.precio)) {
                 NotificationService.error('Error de Validación', 'Precio inválido');
                 return false;
@@ -74,7 +73,7 @@ export class AutomovilOperations {
                 return false;
             }
 
-            // Crear objeto actualizado
+            // Crea objeto actualizado
             const automovilActualizado = new Automovil(
                 id,
                 formData.marca,
@@ -116,14 +115,12 @@ export class AutomovilOperations {
                 return false;
             }
 
-            // Verificar dependencias - No se puede eliminar si tiene stock
             const stock = controllerManager.stockController.getByAutomovil(id);
             if (stock.length > 0) {
                 NotificationService.error('Error', 'No se puede eliminar. El automóvil tiene stock asociado');
                 return false;
             }
 
-            // Confirmar eliminación
             if (!confirm(CONSTANTS.MESSAGES.CONFIRM.DELETE)) {
                 return false;
             }

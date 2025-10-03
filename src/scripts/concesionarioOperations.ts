@@ -80,14 +80,13 @@ export class ConcesionarioOperations {
                 return false;
             }
 
-            // Verificar que no exista otro concesionario con el mismo NIF (excepto el actual)
             const existeNif = controllerManager.concesionarioController.getByNif(formData.nif);
             if (existeNif && existeNif.id !== id) {
                 NotificationService.error('Error', 'Ya existe un concesionario con ese NIF');
                 return false;
             }
 
-            // Crear objeto actualizado
+            // Crea objeto actualizado
             const concesionarioActualizado = new Concesionario(
                 id,
                 formData.nombre,

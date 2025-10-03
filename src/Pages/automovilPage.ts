@@ -211,7 +211,6 @@ export class AutomovilPage {
     private aplicarFiltros(): void {
         let automovilesEtiltrados = AutomovilOperations.buscar(this.terminoBusqueda);
         
-        // Aplicar filtro de marca
         const marcaSeleccionada = (document.getElementById('filtro-marca') as HTMLSelectElement)?.value;
         if (marcaSeleccionada) {
             automovilesEtiltrados = automovilesEtiltrados.filter(auto => auto.marca === marcaSeleccionada);
@@ -405,7 +404,6 @@ export class AutomovilPage {
     }
 
     private configurarEventListeners(): void {
-        // Hacer la instancia disponible globalmente
         (window as any).automovilPage = this;
 
         // Búsqueda
