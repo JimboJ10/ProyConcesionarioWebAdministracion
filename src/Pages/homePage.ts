@@ -31,13 +31,6 @@ export class HomePage {
                     </div>
                 </div>
 
-                <!-- Quick Actions -->
-                <div class="bg-white rounded-lg shadow-md p-6">
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Acciones Rápidas</h3>
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        ${this.createQuickActions()}
-                    </div>
-                </div>
             </div>
         `;
     }
@@ -158,25 +151,6 @@ export class HomePage {
                     <div class="${item.color} h-2 rounded-full" style="width: ${item.percentage}%"></div>
                 </div>
             </div>
-        `).join('');
-    }
-
-    private createQuickActions(): string {
-        const actions = [
-            { id: 'nueva-venta', label: 'Nueva Venta', icon: '💰', color: 'bg-green-500' },
-            { id: 'agregar-stock', label: 'Agregar Stock', icon: '📦', color: 'bg-blue-500' },
-            { id: 'nuevo-vendedor', label: 'Nuevo Vendedor', icon: '👤', color: 'bg-purple-500' },
-            { id: 'nuevo-auto', label: 'Nuevo Automóvil', icon: '🚗', color: 'bg-red-500' }
-        ];
-
-        return actions.map(action => `
-            <button class="quick-action-btn flex flex-col items-center justify-center p-4 bg-white border-2 border-gray-200 rounded-lg hover:border-gray-300 hover:shadow-md transition-all duration-200"
-                    data-action="${action.id}">
-                <div class="${action.color} rounded-full p-3 text-white text-xl mb-2">
-                    ${action.icon}
-                </div>
-                <span class="text-sm font-medium text-gray-700">${action.label}</span>
-            </button>
         `).join('');
     }
 }

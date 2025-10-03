@@ -536,12 +536,6 @@ export class VentaPage {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                     </svg>
                                 </button>
-                                <button onclick="ventaPage.imprimirFactura('${venta.id}')" 
-                                        class="text-green-600 hover:text-green-900" title="Imprimir factura">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
-                                    </svg>
-                                </button>
                                 <button onclick="ventaPage.cancelarVenta('${venta.id}')" 
                                         class="text-red-600 hover:text-red-900" title="Cancelar venta">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -582,7 +576,7 @@ export class VentaPage {
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-gray-700">
-                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de{' '}
+                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de
                         <span class="font-medium">${this.ventasFiltradas.length}</span> resultados
                     </p>
                 </div>
@@ -860,15 +854,6 @@ export class VentaPage {
         const venta = VentaOperations.obtenerPorId(id);
         if (venta) {
             this.mostrarModalDetallesVenta(venta);
-        }
-    }
-
-    public imprimirFactura(id: string): void {
-        const venta = VentaOperations.obtenerPorId(id);
-        if (venta) {
-            // Aquí podrías implementar la generación de factura en PDF
-            console.log(`Imprimir factura para venta: ${id}`);
-            alert('Funcionalidad de impresión de factura - Generar PDF');
         }
     }
 

@@ -240,7 +240,7 @@ export class ConcesionarioPage {
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-gray-700">
-                        Mostrando <span class="font-medium">${startItem}</span> a <span class="font-medium">${endItem}</span> de{' '}
+                        Mostrando <span class="font-medium">${startItem}</span> a <span class="font-medium">${endItem}</span> de
                         <span class="font-medium">${this.filteredConcesionarios.length}</span> resultados
                     </p>
                 </div>

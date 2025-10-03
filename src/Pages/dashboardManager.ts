@@ -35,25 +35,25 @@ export class DashboardManager {
     private createLayout(): void {
         const app = document.querySelector<HTMLDivElement>('#app')!;
         app.innerHTML = `
-            <div class="min-h-screen bg-gray-50">
+            <div class="min-h-screen bg-gray-50 flex">
                 <!-- Sidebar -->
-                <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-0">
-                    <div class="flex items-center justify-center h-16 bg-blue-600 text-white">
+                <div id="sidebar" class="fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:relative lg:flex lg:flex-col">
+                    <div class="flex items-center justify-center h-16 bg-blue-600 text-white flex-shrink-0">
                         <h1 class="text-xl font-bold">🚗 AutoManager</h1>
                     </div>
-                    <nav class="mt-8">
+                    <nav class="flex-1 overflow-y-auto py-4">
                         ${this.createSidebarMenu()}
                     </nav>
                 </div>
 
-                <!-- Main Content -->
-                <div class="lg:ml-0">
+                <!-- Main Content Container -->
+                <div class="flex-1 flex flex-col min-h-screen lg:ml-0">
                     <!-- Top Navigation -->
-                    <div class="bg-white shadow-sm border-b">
+                    <header class="bg-white shadow-sm border-b flex-shrink-0">
                         <div class="px-4 sm:px-6 lg:px-8">
                             <div class="flex justify-between h-16">
                                 <div class="flex items-center">
-                                    <button id="menu-toggle" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                                    <button id="menu-toggle" class="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500">
                                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                                         </svg>
@@ -62,13 +62,16 @@ export class DashboardManager {
                                 </div>
                                 <div class="flex items-center space-x-4">
                                     <span class="text-sm text-gray-500">Sistema de Concesionarios</span>
+                                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white text-sm font-medium">U</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </header>
 
                     <!-- Page Content -->
-                    <main id="main-content" class="p-6">
+                    <main id="main-content" class="flex-1 p-6 overflow-auto">
                         <!-- El contenido de cada página se cargará aquí -->
                     </main>
                 </div>
@@ -95,8 +98,8 @@ export class DashboardManager {
         return menuItems.map(item => `
             <a href="#" 
                data-page="${item.id}" 
-               class="menu-item flex items-center px-6 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors duration-200 ${item.active ? 'bg-blue-50 text-blue-600 border-r-2 border-blue-600' : ''}">
-                <span class="text-lg mr-3">${item.icon}</span>
+               class="menu-item group flex items-center px-4 py-3 mx-3 mb-1 text-gray-700 rounded-lg hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 ${item.active ? 'bg-blue-50 text-blue-600 shadow-md' : ''}">
+                <span class="text-lg mr-3 group-hover:scale-110 transition-transform duration-200">${item.icon}</span>
                 <span class="font-medium">${item.label}</span>
             </a>
         `).join('');
@@ -137,13 +140,13 @@ export class DashboardManager {
 
     private setActiveMenuItem(pageId: string): void {
         document.querySelectorAll('.menu-item').forEach(item => {
-            item.classList.remove('bg-blue-50', 'text-blue-600', 'border-r-2', 'border-blue-600');
+            item.classList.remove('bg-blue-50', 'text-blue-600', 'shadow-md');
             item.classList.add('text-gray-700');
         });
 
         const activeItem = document.querySelector(`[data-page="${pageId}"]`);
         if (activeItem) {
-            activeItem.classList.add('bg-blue-50', 'text-blue-600', 'border-r-2', 'border-blue-600');
+            activeItem.classList.add('bg-blue-50', 'text-blue-600', 'shadow-md');
             activeItem.classList.remove('text-gray-700');
         }
     }

@@ -341,12 +341,6 @@ export class ServicioOficialPage {
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
                                     </svg>
                                 </button>
-                                <button onclick="servicioOficialPage.verVehiculos('${servicio.id}')" 
-                                        class="text-green-600 hover:text-green-900" title="Ver vehículos">
-                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
-                                    </svg>
-                                </button>
                                 <button onclick="servicioOficialPage.eliminarServicio('${servicio.id}')" 
                                         class="text-red-600 hover:text-red-900" title="Eliminar">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -387,7 +381,7 @@ export class ServicioOficialPage {
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-gray-700">
-                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de{' '}
+                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de
                         <span class="font-medium">${this.serviciosEtiltrados.length}</span> resultados
                     </p>
                 </div>
@@ -537,12 +531,6 @@ export class ServicioOficialPage {
         if (servicio) {
             this.mostrarModalDetalles(servicio);
         }
-    }
-
-    public verVehiculos(id: string): void {
-        // Aquí podrías implementar navegación a la página de stock filtrada por servicio oficial
-        console.log(`Ver vehículos del servicio oficial: ${id}`);
-        alert('Funcionalidad de ver vehículos - Redirigir a página de stock filtrada');
     }
 
     public async eliminarServicio(id: string): Promise<void> {

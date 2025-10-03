@@ -457,7 +457,7 @@ export class StockPage {
             <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
                 <div>
                     <p class="text-sm text-gray-700">
-                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de{' '}
+                        Mostrando <span class="font-medium">${elementoInicio}</span> a <span class="font-medium">${elementoFin}</span> de
                         <span class="font-medium">${this.stocksFiltrados.length}</span> resultados
                     </p>
                 </div>
